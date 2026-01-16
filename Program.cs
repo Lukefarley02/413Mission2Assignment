@@ -9,7 +9,7 @@ namespace DiceRoller
             Console.WriteLine("Welcome to the dice throwing simulator!");
             Console.Write("How many dice rolls would you like to simulate? ");
 
-
+            //error handling for non-integer and negative inputs
             string input = Console.ReadLine();
             if (!int.TryParse(input, out int numRolls) || numRolls <= 0)
             {
@@ -17,7 +17,7 @@ namespace DiceRoller
                 return;
             }
 
-
+            //creates DiceRoller instance and rolls dice
             DiceRoller roller = new DiceRoller();
             int [] results = roller.RollDice(numRolls);
 
@@ -27,6 +27,7 @@ namespace DiceRoller
             Console.WriteLine($"Total number of rolls = {numRolls}.");
             Console.WriteLine();
 
+            //creates histogram
             for (int sum = 2; sum <= 12; sum++)
             {
                 double percent = (results[sum] / (double)numRolls) * 100.0;
